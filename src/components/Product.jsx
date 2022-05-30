@@ -10,8 +10,6 @@ import {
 } from "@chakra-ui/react";
 
 const Product = ({ data }) => {
-  // TODO: Remove below const and instead import them from chakra
-  // console.log(data);
   return (
     <Stack
       data-cy="product"
