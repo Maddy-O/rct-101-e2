@@ -1,19 +1,32 @@
 import React from "react";
+import {
+  Button,
+  Modal,
+  ModalBody,
+  Input,
+  Select,
+  RadioGroup,
+  Radio,
+} from "@chakra-ui/react";
 
-const AddProduct = () => {
-  // TODO: Remove below const and instead import them from chakra
-  const Button = () => <div />;
-  const Modal = () => <div />;
-  const ModalBody = () => <div />;
-  const Input = () => <div />;
-  const Select = () => <div />;
-  const RadioGroup = () => <div />;
-  const Radio = () => <div />;
-
+const AddProduct = ({ isOpen, onOpen, onClose }) => {
   return (
     <>
-      <Button my={4} data-cy="add-product-button"></Button>
-      <Modal>
+      <Button
+        data-cy="add-product-button"
+        // my={4}
+        // bg="teal"
+        // color="whitesmoke"
+        // border="1px solid teal"
+        // padding="7px 10px"
+        // borderRadius="15px"
+        // cursor="pointer"
+        // boxShadow="1px 1px 1px 2px gray"
+        onClick={onOpen}
+      >
+        Add Product
+      </Button>
+      <Modal isOpen={isOpen} onClose={onClose}>
         <ModalBody pb={6}>
           <Input data-cy="add-product-title" />
           <Select data-cy="add-product-category">
@@ -27,7 +40,10 @@ const AddProduct = () => {
             <Radio data-cy="add-product-gender-unisex"></Radio>
           </RadioGroup>
           <Input data-cy="add-product-price" />
-          <Button data-cy="add-product-submit-button"></Button>
+          <Button
+            data-cy="add-product-submit-button"
+            onClick={onClose}
+          ></Button>
         </ModalBody>
       </Modal>
     </>
