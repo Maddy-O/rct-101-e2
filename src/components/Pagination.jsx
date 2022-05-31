@@ -1,18 +1,20 @@
 import React from "react";
 import { Button, ButtonGroup, Select } from "@chakra-ui/react";
 
-const Pagination = ({ page, setPage, totalCount, limit, setLimit }) => {
+const Pagination = ({
+  page,
+  totalCount,
+  limit,
+  setLimit,
+  handlePagesForward,
+}) => {
   return (
-    <ButtonGroup>
+    <ButtonGroup gap="4">
       <Button data-cy="pagination-first-button">First</Button>
       <Button
         data-cy="pagination-previous-button"
         disabled={page <= 1}
-        onClick={() => {
-          if (page > 1) {
-            setPage(page - 1);
-          }
-        }}
+        onClick={handlePagesForward}
       >
         {" < "}
       </Button>
@@ -39,11 +41,10 @@ const Pagination = ({ page, setPage, totalCount, limit, setLimit }) => {
       <Button
         data-cy="pagination-next-button"
         disabled={totalCount < page * 5}
-        onClick={() => {
-          if (page > 1) {
-            setPage(page + 1);
-          }
-        }}
+        onClick={handlePagesForward}
+        rightIcon={<ArrowForwardIcon />}
+        colorScheme="teal"
+        variant="outline"
       >
         {" > "}
       </Button>

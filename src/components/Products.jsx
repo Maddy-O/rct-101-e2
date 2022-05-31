@@ -18,6 +18,12 @@ const Products = () => {
     price: 0,
   });
 
+  const handlePagesForward = () => {
+    if (page > 1) {
+      setPage(page + 1);
+    }
+  };
+
   const handleOnChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -44,7 +50,7 @@ const Products = () => {
     axios
       .get(`http://localhost:8080/products?_page=${page}&_limit=${3}`)
       .then((res) => setData([...res.data]));
-  }, [limit]);
+  }, [form]);
 
   return (
     <Flex className={style.flex}>
@@ -68,6 +74,7 @@ const Products = () => {
         totalCount={totalCount}
         limit={limit}
         setLimit={setLimit}
+        handlePagesForward={handlePagesForward}
       />
     </Flex>
   );
